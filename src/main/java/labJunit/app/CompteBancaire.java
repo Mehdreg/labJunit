@@ -1,17 +1,23 @@
 package labJunit.app;
 
 public class CompteBancaire {
+
     private double solde;
 
-    public CompteBancaire(double soldeInitial) {
-        this.solde = soldeInitial;
+    public CompteBancaire(double monSolde) {
+        solde = monSolde;
     }
 
-    public double debiterSolde(double montant) {
-        return solde-montant;
+    public double debiterSolde(double montant)
+    {
+        solde = solde - montant;
+        return solde;
     }
-    
-    public double crediterSolde(double montant) {
-    	return solde+montant;
+
+    public double crediterSolde(double montant)
+    {
+        solde = solde + montant;
+        return solde;
     }
+
 }

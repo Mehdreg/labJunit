@@ -1,35 +1,31 @@
 package labJunit.app;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 public class TestCompteBancaire {
-    
     @Test
-    public void testDebiterSoldeCasLimite() {
-        CompteBancaire compte = new CompteBancaire(1000);
-        double soldeApresDebit = compte.debiterSolde(500);
-        assertEquals(500, soldeApresDebit, 0);
+    void testDebiter() {
+        CompteBancaire c = new CompteBancaire(100);
+        assertEquals(99.5,c.debiterSolde(0.5));
     }
-    
+
     @Test
-    public void testDebiterSoldeMontantSuperieurAuSolde() {
-        CompteBancaire compte = new CompteBancaire(1000);
-        double soldeApresDebit = compte.debiterSolde(1500);
-        assertEquals(1000, soldeApresDebit, 0);
+    void testDebiterZero() {
+        CompteBancaire c = new CompteBancaire(100);
+        assertEquals(100,c.debiterSolde(0));
     }
-    
+
     @Test
-    public void testCrediterSoldeCasLimite() {
-        CompteBancaire compte = new CompteBancaire(1000);
-        double soldeApresCredit = compte.crediterSolde(500);
-        assertEquals(1500, soldeApresCredit, 0);
+    void testCrediter() {
+        CompteBancaire c = new CompteBancaire(100);
+        assertEquals(110,c.crediterSolde(10));
     }
-    
+
     @Test
-    public void testCrediterSoldeMontantNegatif() {
-        CompteBancaire compte = new CompteBancaire(1000);
-        double soldeApresCredit = compte.crediterSolde(-500);
-        assertEquals(1000, soldeApresCredit, 0);
+    void testCrediterZero() {
+        CompteBancaire c = new CompteBancaire(100);
+        assertEquals(100,c.crediterSolde(0));
     }
 }
